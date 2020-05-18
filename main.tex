@@ -1,0 +1,209 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%          PhD Dissertation Template                 %
+%         Created by David Rodríguez                 %
+%         Last updated: May 18, 2020                 % 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%% Document Preamble %%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt, a4paper, twoside, openright]{book}
+\usepackage[utf8]{inputenc} %document encoding
+\usepackage{amssymb} %various useful mathematical symbols
+\usepackage{amsthm} %extended theorem environments
+\usepackage{amsmath} %handful of options for displaying equations.
+\usepackage{graphicx} %graphics package. 
+	\graphicspath{ {img/} } %location of images relative to this .tex file.
+\usepackage[font={footnotesize}, labelsep = period, labelfont={normal, it}, textfont={normal, it}]{caption} %caption format
+\usepackage[it,IT]{subfigure}
+\usepackage[round]{natbib} %extend the ´functinality of the \cite 
+	\bibliographystyle{abbrvnat}
+\usepackage{lineno} %adds line numbers in drafts. Great for reviews/editing. 
+%Start line numbering with \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on for the whole report with \linenumbers.	
+\usepackage{appendix}
+\usepackage{epigraph}
+	%\epigraphfontsize{\small\itshape}
+	\setlength\epigraphwidth{9.5cm}
+	\setlength\epigraphrule{0pt}
+\usepackage[nottoc,notlot,notlof]{tocbibind} %for bibliography to appear in the TOC.	
+\usepackage{gensymb} %substitutes \degree for the º symbol. 
+\usepackage{upgreek}
+\usepackage{makeidx} %allows index generation
+\usepackage{enumitem} %resumes multiplace \enumerate lists. 
+\usepackage{mathptmx} %selects Times Roman as basic font
+\usepackage{helvet} %selects Helvetica as sans-serif font  
+\usepackage{courier} %selects Courier as typewriter font
+\usepackage{type1cm} %activate if the above 3 fonts are not available on your system
+\usepackage[bottom]{footmisc}% places footnotes at page bottom
+\usepackage{fancyhdr} %used to manage the headers and footers
+\usepackage{emptypage} %removes headers and footers from empty pages that are inserted to preserve the openright rule
+\usepackage[explicit]{titlesec}%used to customize format for titles and sections
+\usepackage{lmodern}
+\usepackage{lipsum}
+\usepackage{CJKutf8} %allow Japanese text
+\setcounter{secnumdepth}{3} %so that numbers 1.1.1.1 appear in subsubsections
+\setcounter{tocdepth}{3} %so that subsubsection appear in the table of contents
+
+\makeindex   %enable indexing
+\newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
+\newcommand{\tab}[1]{\hspace{.2\textwidth}\rlap{#1}}
+\newcommand{\euler}{\mathrm{e}}
+
+%%% Formatting options %%%
+% Margins
+%Note: These settings were derived from the official format requirements of Tohoku University Graduate School of Engineering
+\topmargin -20mm
+\leftmargin 25mm
+\rightmargin 25mm
+%\bottommargin 25mm
+%Note: %These settings were derived from the PhD thesis of Masataku Sutoh
+%\topmargin -25.4mm	
+\headheight 20mm
+\headsep 10mm
+\textheight 237mm
+\footskip 15.0mm
+
+% Text
+\textwidth 155mm		
+\oddsidemargin  4.6mm		
+\evensidemargin -0.4mm  
+
+% Headers and footers [editable options from the fancyhdr package; it sets the behavior of the pagestyle{fancy}]
+\fancyhead{} %clears all header fields 
+\fancyhead[LE]{\mdseries \leftmark}  %leftmark is the chapter title 
+\fancyhead[RO]{\mdseries \rightmark} %rightmark is the section title
+\fancyfoot[C]{\thepage} %\thepage displays the current page number 
+
+% Titles [editable options from the titelsec package]
+\newlength\chapnumb
+\setlength\chapnumb{3cm}
+
+\titleformat{\chapter}[block]
+{\normalfont\rmfamily}{}{0pt}
+{\parbox[b]{\chapnumb}{%
+   \fontsize{70}{50}\selectfont\thechapter}%
+  \parbox[b]{\dimexpr\textwidth-\chapnumb\relax}{%
+    \raggedleft%
+    \hfill{\LARGE#1}\\
+    \rule{\dimexpr\textwidth-\chapnumb\relax}{0.4pt}}}
+
+\titleformat{name=\chapter,numberless}[block]
+{\normalfont\rmfamily}{}{0pt}
+{\parbox[b]{\chapnumb}{%
+   \mbox{}}%
+  \parbox[b]{\dimexpr\textwidth-\chapnumb\relax}{%
+    \raggedleft%
+    \hfill{\Large#1}\\
+    \rule{\dimexpr\textwidth-\chapnumb\relax}{0.4pt}}}
+    
+\titleformat{\section}{\normalfont\Large\rmfamily}{\thesection}{1em}{#1}
+
+\titleformat{\subsection}{\normalfont\large\rmfamily}{\thesubsection}{1em}{#1}
+
+\titleformat{\subsubsection}{\normalfont\large\rmfamily}{\thesubsubsection}{1em}{#1}
+
+% Extra				
+% Note: these settings were derived from the PhD thesis of Masataku Sutoh (function unknown)
+\renewcommand{\baselinestretch}{1.2}	
+\baselineskip 4.0ex			
+\parindent 2em%12pt				
+\setlength{\abovecaptionskip}{12pt}
+
+\raggedbottom %so that blank spaces appear at the end of the page and not randomly distributed. 
+\usepackage{hyperref} %hyperlinks 
+	\hypersetup{%
+    	pdfborder = {0 0 0}, colorlinks=false, 
+    	linkcolor=red,
+   	 	citecolor=green,
+    	filecolor=magenta,
+    	urlcolor=blue   
+	}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%% Start document %%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%Inser title page
+\input{cover}
+\newpage
+
+%Insert Copyright page
+\thispagestyle{empty} %no page number
+\vspace*{\fill} %to ensure that all the following text is placed at the bottom of the page
+\scriptsize{Add funding- or collaborations-related information here. The work disclosed in this dissertation was conducted in collaboration with the Institute of System Dynamics and Control of the German Aerospace Center (DLR) in their testing facilities in Oberpfaffenhofen, Germany. International research collaborations were partially funded by Tohoku University's Graduate Program for Integration of Mechanical Systems (GP-Mech). The author was additionally supported by the Japanese Ministry of Education, Culture, Sports, Science and Technology (MEXT).}\\
+\vspace{3mm}
+\begin{center}
+\normalsize{
+\copyright \, Copyright 2020, John Wick\\
+\vspace{3mm}
+All Rights Reserved}
+\end{center}
+\newpage
+
+%Dedication page
+\thispagestyle{empty}
+\normalsize
+\vspace*{20mm}
+\begin{flushright}
+\textit{To my beloved wife, Helen.} 
+\end{flushright}
+\newpage
+
+%Begin page numbers for abstract and front material
+\thispagestyle{plain}	%only page numbers on title pages
+\pagestyle{fancy}		%page numbers and custom headers on content pages
+\pagenumbering{roman}	%roman numeral page numbering for front matter
+
+\frontmatter
+\titleformat{name=\chapter, numberless}{\normalfont}{}{0pt}{}
+\titlespacing*{\chapter}{0pt}{-50pt}{30pt}
+
+% Abstract, ToC, LoT, LoF. 
+\include{abstract}
+
+\titleformat
+{name=\chapter, numberless} %command
+[block] %shape
+{\normalfont\rmfamily} %format
+{} %label 
+{0pt} %separation
+{\parbox[b]{\textwidth}{{\LARGE#1}}} %before-code
+\titlespacing*{\chapter}{0pt}{50pt}{40pt} %default spacing
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\titleformat{name=\chapter,numberless}[block]
+{\normalfont\rmfamily}{}{0pt}
+{\parbox[b]{\chapnumb}{%
+   \mbox{}}%
+  \parbox[b]{\dimexpr\textwidth-\chapnumb\relax}{%
+    \raggedleft%
+    \hfill{\Large#1}\\
+    \rule{\dimexpr\textwidth-\chapnumb\relax}{0.4pt}}}
+
+\mainmatter
+%Optional: Force a blank page (only to keep odd pages on the right)
+\iftrue	% change To iffalse to deactivate		
+\newpage 									
+\thispagestyle{empty} 							
+\hbox{} 									
+\fi 									
+%Begin new page numbering
+\newpage
+\thispagestyle{plain}
+\pagenumbering{arabic} 
+
+% Main content
+% Each chapter is coded in a separate file.
+\include{introduction}
+%\include{chapter2}...
+\bibliography{bibliography} %reference to the .bib file. 
+\include{list_of_publications}
+\include{appendix}
+\include{acknowledgments}
+
+\end{document}
